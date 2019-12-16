@@ -1,0 +1,225 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="icon" href="/img/搜索.png" type="image/x-icon">
+<link rel="shortcut icon" href="/img/搜索.png" type="image/x-icon">
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+<title>无主之地</title>
+</head>
+<body>
+<!--<script type="text/javascript" src="/js/background.js"></script>-->
+<!--引入高德api查询天气-->
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=55b45a0e36d15c12758b691362b82069"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=55b45a0e36d15c12758b691362b82069&plugin=AMap.CitySearch"></script>
+
+<div class="div-info">
+    <b><p id="location"></p></b>
+    <p id='forecast' class="div-info-p"></p>
+</div>
+
+<div class="div-login">
+	<p id="text">
+		无边落木萧萧下 不尽长江滚滚来
+	</p>
+    <center>
+    <input id='YOUR_NAME' type="text" onkeypress="seach_defulat()"/></center>
+</div>
+<div class="sea-png">
+	<center>
+	<button title="Baidu搜索"><img id='change' onclick="changeAction_google()" src="/img/baidu.png" width="50px" height="50px"></button>
+	</center>
+</div>
+<footer class="footer">
+<p>
+	 Powered By&nbsp;&nbsp;<a href="https://github.com/nonewind" target="_Blank">noewind </a>
+</p>
+</footer>
+<style>
+
+body {
+	margin: 0;
+	width: 100%;
+	height: 90vh;
+	color: #fff;
+    font-family: sans-serif;
+	background: linear-gradient(-45deg, #ee7752, #a98175, #23a6d5, #23d5ab);
+	background-size: 350% 350%;
+	animation: gradientBG 25s ease infinite;
+}
+
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.div-info{
+    position: relative;
+    margin-top: 30px;
+    margin-left: 30px;
+    z-index: 999;
+}
+.div-info p{
+    font-weight: lighter;
+}
+.div-info-p{
+    margin-top: -10px;
+}
+.div-login {
+    position: relative;
+}
+.div-login p {
+    margin-top: 180px;
+    font-size: 20px;
+    font-weight:lighter;
+    text-align: center;
+    -webkit-animation-name: yamade;
+    -webkit-animation-duration: 3s; /*动画持续时间*/
+    -webkit-animation-iteration-count: 999999; /*动画次数*/
+    -webkit-animation-delay: 0s; /*延迟时间*/
+    }
+    @-webkit-keyframes yamade {
+        0% {
+        opacity: 0; /*初始状态 透明度为0*/
+        }
+        50% {
+        opacity: 1; /*中间状态 透明度为0*/
+        }
+        100% {
+        opacity: 0; /*结尾状态 透明度为1*/
+        }
+        }
+
+.div-login input {
+    height: 50px;
+    width: 400px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    padding: 20px;
+    font-size: 20px;
+    font-weight:lighter;
+}
+.sea-png {
+    position: relative;
+    margin-top: 25px;
+    margin-left: 15px;
+}
+.sea-png button {
+    margin-right: 20px;
+    height: 100px;
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+        /* 鼠标经过旋转 */
+    -webkit-background-size: 220px 220px;
+    -moz-background-size: 220px 220px;
+    background-size: 220px 220px;
+    -webkit-border-radius: 110px;
+    border-radius: 110px;
+    -webkit-transition: -webkit-transform 0.5s ease-out;
+    -moz-transition: -moz-transform 0.5s ease-out;
+    -o-transition: -o-transform 0.5s ease-out;
+    -ms-transition: -ms-transform 0.5s ease-out;
+}
+.sea-png button:hover{
+    -webkit-transform: rotateZ(360deg);  
+    -moz-transform: rotateZ(360deg);  
+    -o-transform: rotateZ(360deg);  
+    -ms-transform: rotateZ(360deg);  
+    transform: rotateZ(360deg);  
+}
+.footer {
+    margin-top: 220px;
+}
+.footer p {
+    font-weight:lighter;
+    text-align: center;
+    font-size: 20px;
+    
+}
+.footer p a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+</style>
+<script language="javascript">
+    function text_change(){
+        var i=0;
+        var text_list = ['人间四月芳菲尽 山寺桃花始盛开', '弦凝指咽声停处 别有深情一万重', '春风十里扬州路 卷上珠帘总不如', '莫愁前路无知己 天下谁人不识君', '但使主人能醉客 不知何处是他乡','无边落木萧萧下 不尽长江滚滚来'];
+        var t=window.setInterval(function(){
+            for(;i<text_list.length;){
+            if(i==text_list.length-1){
+                i=0;}
+                i++;
+                document.getElementById('text').innerHTML=text_list[i];
+                break;
+       }},3000);} 
+//判断是否按下了enter 如果是就执行搜索 
+function seach_defulat() {
+    if (event.keyCode == 13) {
+        var name = document.getElementById('YOUR_NAME')
+        var change = document.getElementById("change");
+        name = name.value
+        if(name==''){
+            alert("你输入了个锤子？想Peach?");
+        }
+        else{
+        name = name.replace(" ", "+");
+        if (change.getAttribute("src",2)=="/img/baidu.png"){
+            window.open('http://www.baidu.com/s?wd='+ name,'_Blank')
+        }
+        else{
+        window.open('https://www.google.com/search?q='+ name,'_Blank')}
+        }
+    }
+}
+function changeAction_google()
+// 点击图标切换google/baidu 执行搜索
+    {
+        var change = document.getElementById("change");
+        if(change.getAttribute("src",2)=="/img/baidu.png"){
+            change.src = '/img/google.png';
+        }else{
+            change.src = '/img/baidu.png';
+        }
+    }
+
+function CityInfo(){
+    // 调用了高德的获取地点的Api和天气预报 原本想用彩云的 无奈彩云的太专业了 看的眼晕
+    AMap.plugin('AMap.CitySearch', function () {
+        var citySearch = new AMap.CitySearch()
+        citySearch.getLocalCity(function (status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+            // 查询成功，result即为当前所在城市信息
+            }
+            var city = result.city;
+            document.getElementById('location').innerHTML = '您当前所在城市：'+city+'   未来几天的天气';
+            AMap.plugin('AMap.Weather', function() {
+            var weather = new AMap.Weather();
+            //未来4天天气预报
+            weather.getForecast(city, function(err, data) {
+                if (err) {return;}
+                var str = [];
+                for (var i = 0,dayWeather; i < data.forecasts.length; i++) {
+                    dayWeather = data.forecasts[i];
+                    str.push(dayWeather.date+' <span class="weather">'+dayWeather.dayWeather+'</span> '+ dayWeather.nightTemp + '~' + dayWeather.dayTemp + '℃');
+                }
+                document.getElementById('forecast').innerHTML = str.join('<br>');
+            });
+            });
+            
+        })
+    })
+}
+CityInfo();
+text_change()
+</script>
+</body>
+</html>
