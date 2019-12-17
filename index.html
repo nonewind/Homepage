@@ -69,31 +69,28 @@ body {
 .div-info p{
     font-weight: lighter;
 }
-.div-info-p{
-    margin-top: -10px;
-}
 .div-login {
     position: relative;
 }
 .div-login p {
-    margin-top: 180px;
-    font-size: 20px;
+    margin-top: 150px;
+    font-size: 26px;
     font-weight:lighter;
     text-align: center;
     -webkit-animation-name: yamade;
-    -webkit-animation-duration: 3s; /*动画持续时间*/
+    -webkit-animation-duration: 4s; /*动画持续时间*/
     -webkit-animation-iteration-count: 999999; /*动画次数*/
-    -webkit-animation-delay: 0s; /*延迟时间*/
+    -webkit-animation-delay: 0s; 
     }
     @-webkit-keyframes yamade {
         0% {
-        opacity: 0; /*初始状态 透明度为0*/
+        opacity: 0; 
         }
         50% {
-        opacity: 1; /*中间状态 透明度为0*/
+        opacity: 1; 
         }
         100% {
-        opacity: 0; /*结尾状态 透明度为1*/
+        opacity: 0; 
         }
         }
 
@@ -162,7 +159,7 @@ body {
                 i++;
                 document.getElementById('text').innerHTML=text_list[i];
                 break;
-       }},3000);} 
+       }},4000);} // 配合css文字淡如淡出 在文字淡出时更换文字
 //判断是否按下了enter 如果是就执行搜索 
 function seach_defulat() {
     if (event.keyCode == 13) {
@@ -211,7 +208,7 @@ function CityInfo(){
     });
     // 成功获取城市 返回天气信息
     function city_success(city){
-    document.getElementById('location').innerHTML = '您当前所在城市：'+city+'   未来几天的天气';
+    document.getElementById('location').innerHTML = city+'   未来天的天气';
             AMap.plugin('AMap.Weather', function() {
             var weather = new AMap.Weather();
             //未来4天天气预报
@@ -227,7 +224,7 @@ function CityInfo(){
             });}
     // 无法获取定位 
     function city_defalt(){
-        document.getElementById('location').innerHTML = '获取定位失败~';
+        document.getElementById('location').innerHTML = '~获取定位失败~';
     }}
 CityInfo();
 text_change();
