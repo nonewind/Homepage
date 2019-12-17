@@ -5,25 +5,20 @@
 <link rel="icon" href="/img/搜索.png" type="image/x-icon">
 <link rel="shortcut icon" href="/img/搜索.png" type="image/x-icon">
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
-<title>无主之地</title>
+<title>~/·/  \·\~</title>
 </head>
 <body>
-<!--<script type="text/javascript" src="/js/background.js"></script>-->
-<!--引入高德api查询天气-->
-<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=55b45a0e36d15c12758b691362b82069"></script>
-<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=55b45a0e36d15c12758b691362b82069&plugin=AMap.CitySearch"></script>
-
-<div class="div-info">
-    <b><p id="location"></p></b>
-    <p id='forecast' class="div-info-p"></p>
-</div>
+<!-- 采用了天气插件所以高德api废弃 -->
+<div class="weather">
+        <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tz&skin=pitaya" frameborder="0" width="100%" height="30" allowtransparency="true"></iframe>
+    </div>
 
 <div class="div-login">
 	<p id="text">
 		无边落木萧萧下 不尽长江滚滚来
 	</p>
     <center>
-    <input id='YOUR_NAME' type="text" onkeypress="seach_defulat()"/></center>
+    <input id='YOUR_NAME' type="text" onkeypress="seach_defulat()" placeholder="输入搜索内容"/></center>
 </div>
 <div class="sea-png">
 	<center>
@@ -31,17 +26,16 @@
 	</center>
 </div>
 <footer class="footer">
-    <center>
 <p>
 	Powered By&nbsp;&nbsp;<a href="https://github.com/nonewind" target="_Blank">noewind </a>
-</p></center>
+</p>
 </footer>
 <style>
 
 body {
 	margin: 0;
 	width: 100%;
-	height: 90vh;
+	height: 60vh;
 	color: #fff;
     font-family: sans-serif;
 	background: linear-gradient(-45deg, #ee7752, #a98175, #23a6d5, #23d5ab);
@@ -59,6 +53,12 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+.weather{
+    position:absolute;
+    top: 10px;
+    left:10px;
+    background-color:rgba(255, 255, 255, 0);
 }
 .div-info{
     position: relative;
@@ -133,14 +133,18 @@ body {
     transform: rotateZ(360deg);  
 }
 .footer {
-    margin-top: 220px;    
+    position: absolute;
+    bottom: 10px;
+    z-index: 1000;
+    text-align: center;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    height: 20px;
+    line-height: 20px;
 }
 .footer p {
-    
     font-weight:lighter;
-    text-align: center;
-    font-size: 20px;
-    
+    font-size: 14px;
 }
 .footer p a {
     color: rgb(0, 0, 0);
@@ -189,44 +193,7 @@ function changeAction_google()
             change.src = '/img/baidu.png';
         }
     }
-
-function CityInfo(){
-    // 调用了高德的获取地点的Api和天气预报 原本想用彩云的 无奈彩云的太专业了 看的眼晕
-    AMap.plugin('AMap.Geolocation', function() {
-        var geolocation = new AMap.Geolocation({
-            enableHighAccuracy: true,//是否使用高精度定位，默认:true
-            timeout: 10000,          //超过10秒后停止定位，默认：5s
-        });
-        geolocation.getCurrentPosition(function(status,result){
-            if(status=='complete'){
-                city = result.addressComponent.city;
-                city_success(city);
-            }else{
-                city_defalt()
-            }
-        });
-    });
-    // 成功获取城市 返回天气信息
-    function city_success(city){
-    document.getElementById('location').innerHTML = city+'   未来天的天气';
-            AMap.plugin('AMap.Weather', function() {
-            var weather = new AMap.Weather();
-            //未来4天天气预报
-            weather.getForecast(city, function(err, data) {
-                if (err) {return;}
-                var str = [];
-                for (var i = 0,dayWeather; i < data.forecasts.length; i++) {
-                    dayWeather = data.forecasts[i];
-                    str.push(dayWeather.date+' <span class="weather">'+dayWeather.dayWeather+'</span> '+ dayWeather.nightTemp + '~' + dayWeather.dayTemp + '℃');
-                }
-                document.getElementById('forecast').innerHTML = str.join('<br>');
-            });
-            });}
-    // 无法获取定位 
-    function city_defalt(){
-        document.getElementById('location').innerHTML = '~获取定位失败~';
-    }}
-CityInfo();
+// 采用了天气插件所以高德api废弃
 text_change();
 </script>
 </body>
