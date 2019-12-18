@@ -10,9 +10,9 @@
 <body>
 <div class="div-navigate" id='navigate' onclick="navigate_hide()">
     <!--收藏夹栏-->
-    <img src='/img/方向-向右-粗.png' onclick="change_path()"/> 
+    <img src='/img/方向-向右-粗.png'/> 
     <div class="navigate" >
-        <a href="https://github.com"  target="_Blank">Github同性交友</a>
+        <a href="https://github.com"  target="_Blank">国际同性交友平台</a>
     </div>
     <div class="navigate">
         <a href="http=://47.240.92.43:8096/web/index.html"  target="_Blank">Jeffin-在线看剧</a>
@@ -21,10 +21,10 @@
         <a href="http://video.ziheng.xyz"  target="_Blank">AriNG-神奇下载器</a>
     </div>
     <div class="navigate">
-        <a href="https://www.jb51.net/shouce/jquery1.82/regexp.html"  target="_Blank">正则表达式速查</a>
+        <a href="https://www.jb51.net/shouce/jquery1.82/regexp.html"  target="_Blank">正则速查</a>
     </div>
     <div class="navigate">
-        <a href="https://tool.lu/"  target="_Blank">程序员在线工具箱</a>
+        <a href="https://tool.lu/"  target="_Blank">在线工具箱</a>
     </div>
     <div class="navigate">
         <a href="http://magnet.chongbuluo.com/"  target="_Blank">网盘搜索集合</a>
@@ -49,7 +49,7 @@
 </div>
 <div class="sea-png">
 	<center>
-	<button title="Baidu搜索"><img id='change' onclick="changeAction_google()" src="/img/baidu.png" width="50px" height="50px"></button>
+	<button title="搜索引擎切换"><img id='change' onclick="changeAction_google()" src="/img/baidu.png" width="50px" height="50px"></button>
 	</center>
 </div>
 <footer class="footer">
@@ -88,8 +88,8 @@ body {
     z-index: 500;
     margin-top: 0;
     margin-left: -200px; 
-    -webkit-transition: .5s ease-in-out;/* css的transition允许css的属性值在一定的时间内从一个状态平滑的过渡到另一个状态 */
-    -moz-transition: .5s ease-in-out;/*这里为了兼容其他浏览器*/
+    -webkit-transition: .5s ease-in-out;/*平滑的过渡 */
+    -moz-transition: .5s ease-in-out;/*兼容其他浏览器*/
     -o-transition: .5s ease-in-out;
     background-color: rgba(0, 0, 0, 0);
 }
@@ -109,6 +109,14 @@ body {
     margin-top: 10px;
     background-color: #fff;
     border-radius: 25px; /* 设置圆角矩形 */
+}
+.navigate:hover{ 
+    transform: scale(1.1);
+    background-color: rgba(123, 219, 197, 0.212);
+    -webkit-transition: 0.1s ease-in-out;/*平滑的过渡 */
+    -moz-transition: 0.1s ease-in-out;/*兼容其他浏览器*/
+    -o-transition: 0.1s ease-in-out;
+    
 }
 
 .navigate a{
@@ -198,7 +206,7 @@ body {
 }
 .footer {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     z-index: 1000;
     text-align: center;
     width: 100%;
