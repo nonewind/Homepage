@@ -5,4 +5,4 @@
 - 加入收藏夹 可拓展收藏夹的数量
 
 # 效果预览
-![[Image text](https://raw.githubusercontent.com/nonewind/Homepage/master/img/Scr.png)
+![[Image](https://raw.githubusercontent.com/nonewind/Homepage/master/img/Scr.png)
