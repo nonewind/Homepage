@@ -38,6 +38,33 @@
     <div class="navigate">
         <a href="https://www.iconfont.cn/collections/index"  target="_Blank">阿里开源图标库</a>
     </div>
+    <div class="navigate-right" >
+        <a href="https://account.aliyun.com/login/qr_login.htm?spm=5176.8097504.fszjobuve.22.2ec76fb5bIJ02f&oauth_callback=https%3A%2F%2Fwww.aliyun.com%2Fnotfound%2F&aly_as=VLMCIIsC"  target="_Blank">阿里云登录</a>
+    </div>
+    <div class="navigate-right" >
+        <a href="https://www.vps234.com/ipchecker/"  target="_Blank">服务器被墙检测</a>
+    </div>
+    <div class="navigate-right" >
+        <a href="https://my.vultr.com/"  target="_Blank">Vultr</a>
+    </div>
+    <div class="navigate-right" >
+        <a href="https://panel.op-net.com/login"  target="_Blank">OneProvider</a>
+    </div>
+    <div class="navigate-right" >
+        <a href="https://www.wondercv.com/"  target="_Blank">超级简历</a>
+    </div>
+    <div class="navigate-right" >
+        <a href="https://freessl.cn/"  target="_Blank">免费SSL证书</a>
+    </div>
+    <div class="navigate-right" >
+        <a href="https://bigjpg.com/zh"  target="_Blank">照片无损放大</a>
+    </div>
+    <div class="navigate-right" >
+        <a href="http://www.htmleaf.com/"  target="_Blank">JQuery库</a>
+    </div>
+    <div class="navigate-right" >
+        <a href="https://lbs.amap.com/"  target="_Blank">高德开放平台</a>
+    </div>
 </div>
 <!-- 采用了天气插件所以高德api废弃 -->
 <div class="weather">
@@ -85,12 +112,12 @@ body {
 	}
 }
 .div-navigate{
-    width: 240px;
+    width: 440px;
     overflow: hidden;
     position: absolute;
     z-index: 500;
     margin-top: 0;
-    margin-left: -200px; 
+    margin-left: -400px; 
     -webkit-transition: .5s ease-in-out;/*平滑的过渡 */
     -moz-transition: .5s ease-in-out;/*兼容其他浏览器*/
     -o-transition: .5s ease-in-out;
@@ -99,7 +126,7 @@ body {
 .div-navigate img{
     position: absolute;
     margin-top: 100px;
-    margin-left: 190px;
+    margin-left: 390px;
     width: 50px;
     height: 50px;
     z-index: 99999;
@@ -123,6 +150,34 @@ body {
 }
 
 .navigate a{
+    position: relative;
+    top:4px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #000;
+}
+.navigate-right{
+    text-align: center;
+    position: relative;
+    width: 150px;
+    height: 30px;
+    top:-360px;
+    margin-top: 10px;
+    margin-left: 200px;
+    background-color: #fff;
+    border-radius: 25px; /* 设置圆角矩形 */
+}
+
+.navigate-right:hover{ 
+    transform: scale(1.1);
+    background-color: rgba(123, 219, 197, 0.212);
+    -webkit-transition: 0.1s ease-in-out;/*平滑的过渡 */
+    -moz-transition: 0.1s ease-in-out;/*兼容其他浏览器*/
+    -o-transition: 0.1s ease-in-out;
+    
+}
+
+.navigate-right a{
     position: relative;
     top:4px;
     text-decoration: none;
@@ -273,7 +328,7 @@ function changeAction_google()
 function navigate_hide(){
     var navigate = document.getElementById('navigate');
     if (navigate.style['margin-left'] == '0px') {
-        navigate.style['margin-left'] = '-200px';
+        navigate.style['margin-left'] = '-400px';
     } else {
         navigate.style['margin-left'] = '0px';
     }
