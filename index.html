@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="div-navigate" id='navigate' onclick="navigate_hide()">
+    <!-- <div class="div-navigate" id='navigate' onclick="navigate_hide()">
 
         <img src='/img/方向-向右-粗.png' />
         <div class="navigate">
@@ -68,12 +68,12 @@
         <div class="navigate-right">
             <a href="https://lbs.amap.com/" target="_Blank">高德开放平台</a>
         </div>
-    </div>
+    </div> -->
 
-    <div class="weather">
+    <!-- <div class="weather">
         <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tm&skin=orange" frameborder="0" width="270"
             height="24" allowtransparency="true"></iframe>
-    </div>
+    </div> -->
     <div class="div-login">
         <p id="text">
             春风又绿江南岸 明月何时照我还
@@ -100,120 +100,33 @@
             color: #fff;
             font-family: sans-serif;
             background: linear-gradient(-45deg, #ee7752, #a98175, #23a6d5, #23d5ab);
-            background-size: 350% 350%;
+            background-size: 1000% 1000%;
             animation: gradientBG 25s ease infinite;
         }
 
         @keyframes gradientBG {
             0% {
-                background-position: 0% 50%;
+                background-position: 0% 100%;
             }
-
+            
+            25% {
+                background-position: 75% 25%;
+            }
             50% {
                 background-position: 100% 50%;
             }
-
+            75% {
+                background-position: 25% 75%;
+            }
             100% {
-                background-position: 0% 50%;
+                background-position: 0% 100%;
             }
         }
 
-        .div-navigate {
-            width: 440px;
-            overflow: hidden;
-            position: absolute;
-            z-index: 500;
-            margin-top: 0;
-            margin-left: -400px;
-            -webkit-transition: .5s ease-in-out;
-            /*平滑的过渡 */
-            -moz-transition: .5s ease-in-out;
-            /*兼容其他浏览器*/
-            -o-transition: .5s ease-in-out;
-            background-color: rgba(0, 0, 0, 0);
-        }
-
-        .div-navigate img {
-            position: absolute;
-            margin-top: 100px;
-            margin-left: 390px;
-            width: 50px;
-            height: 50px;
-            z-index: 99999;
-        }
-
-        .navigate {
-            text-align: center;
-            width: 150px;
-            height: 30px;
-            margin-left: 20px;
-            margin-top: 10px;
-            background-color: #fff;
-            border-radius: 25px;
-            /* 设置圆角矩形 */
-        }
-
-        .navigate:hover {
-            transform: scale(1.1);
-            background-color: rgba(123, 219, 197, 0.212);
-            -webkit-transition: 0.1s ease-in-out;
-            /*平滑的过渡 */
-            -moz-transition: 0.1s ease-in-out;
-            /*兼容其他浏览器*/
-            -o-transition: 0.1s ease-in-out;
-
-        }
-
-        .navigate a {
-            position: relative;
-            top: 4px;
-            text-decoration: none;
-            font-size: 15px;
-            color: #000;
-        }
-
-        .navigate-right {
-            text-align: center;
-            position: relative;
-            width: 150px;
-            height: 30px;
-            top: -360px;
-            margin-top: 10px;
-            margin-left: 200px;
-            background-color: #fff;
-            border-radius: 25px;
-            /* 设置圆角矩形 */
-        }
-
-        .navigate-right:hover {
-            transform: scale(1.1);
-            background-color: rgba(123, 219, 197, 0.212);
-            -webkit-transition: 0.1s ease-in-out;
-            /*平滑的过渡 */
-            -moz-transition: 0.1s ease-in-out;
-            /*兼容其他浏览器*/
-            -o-transition: 0.1s ease-in-out;
-
-        }
-
-        .navigate-right a {
-            position: relative;
-            top: 4px;
-            text-decoration: none;
-            font-size: 15px;
-            color: #000;
-        }
-
-        .weather {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: rgba(0, 0, 0, 0);
-        }
 
         .div-info {
             position: relative;
-            margin-top: 30px;
+            margin-top: 70px;
             margin-left: 30px;
             z-index: 999;
         }
@@ -224,10 +137,12 @@
 
         .div-login {
             position: relative;
+            margin-top: 300px;
         }
 
         .div-login p {
-            margin-top: 150px;
+            /* margin-top: 150px; */
+            margin-bottom: 60px;
             font-size: 26px;
             font-weight: lighter;
             text-align: center;
@@ -254,8 +169,8 @@
         }
 
         .div-login input {
-            height: 50px;
-            width: 400px;
+            height: 60px;
+            width: 500px;
             border-radius: 25px;
             border: 1px solid rgba(255, 255, 255, 0);
             padding: 20px;
@@ -363,14 +278,14 @@
             }
         }
         // 采用了天气插件所以高德api废弃
-        function navigate_hide() {
-            var navigate = document.getElementById('navigate');
-            if (navigate.style['margin-left'] == '0px') {
-                navigate.style['margin-left'] = '-400px';
-            } else {
-                navigate.style['margin-left'] = '0px';
-            }
-        }
+        // function navigate_hide() {
+        //     var navigate = document.getElementById('navigate');
+        //     if (navigate.style['margin-left'] == '0px') {
+        //         navigate.style['margin-left'] = '-400px';
+        //     } else {
+        //         navigate.style['margin-left'] = '0px';
+        //     }
+        // }
         text_change();
     </script>
 </body>
